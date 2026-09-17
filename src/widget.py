@@ -13,6 +13,9 @@ def mask_account_card(info: str) -> str:
     number = parts[-1]
     name = " ".join(parts[:-1])
 
+    if not number.isdigit():
+        return "Некорректный ввод"
+
     if not name:
         return "Некорректный ввод"
 
