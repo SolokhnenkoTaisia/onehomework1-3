@@ -93,6 +93,30 @@ print(result)
 result = sort_by_date(operations, reverse=False)
 ```
 
+### Модуль `generators.py`
+
+Модуль содержит функции для работы с транзакциями и генерации номеров карт.
+
+- `filter_by_currency(transactions, currency)` — возвращает транзакции с указанным кодом валюты.
+- `transaction_descriptions(transactions)` — по очереди возвращает описания транзакций.
+- `card_number_generator(start, stop)` — генерирует номера карт в заданном диапазоне от `start` до `stop` включительно. Номер выводится в формате `XXXX XXXX XXXX XXXX`.
+
+Пример использования:
+
+```python
+from src.generators import (
+    card_number_generator,
+    filter_by_currency,
+    transaction_descriptions,
+)
+
+usd_transactions = filter_by_currency(transactions, "USD")
+
+descriptions = transaction_descriptions(transactions)
+
+card_numbers = card_number_generator(1, 5)
+```
+
 ## Тестирование
 
 Для запуска тестов используйте команду:
@@ -120,4 +144,5 @@ HTML-отчёт создаётся в папке `htmlcov/`. Для просмо
 * `src/processing.py` — функции фильтрации и сортировки банковских операций.
 * `tests/` — тесты проекта.
 * `htmlcov/` — HTML-отчёт о покрытии кода тестами.
+* `src/generators.py` — генераторы для фильтрации транзакций, получения описаний и создания номеров карт.
 
