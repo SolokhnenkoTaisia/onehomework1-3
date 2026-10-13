@@ -3,10 +3,10 @@ from functools import wraps
 from typing import Any
 
 
-def log(filename: str | None = None) -> Callable:
+def log(filename: str | None = None) -> Callable[..., Any]:
     """Декоратор для логирования выполнения функций и возникающих ошибок."""
 
-    def decorator(func: Callable) -> Callable:
+    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
         @wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
