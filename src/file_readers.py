@@ -18,7 +18,8 @@ def read_transactions_from_csv(
 def read_transactions_from_excel(
     file_path: str | Path,
 ) -> list[dict[str, Any]]:
-    """Читает финансовые операции из Excel-файла и возвращает список словарей."""
+    """Читает финансовые операции из Excel-файла и возвращает
+    список словарей."""
     dataframe = pd.read_excel(file_path)
     records = dataframe.to_dict(orient="records")
     return cast(list[dict[str, Any]], records)
