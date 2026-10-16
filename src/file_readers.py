@@ -10,7 +10,7 @@ def read_transactions_from_csv(
     file_path: str | Path,
 ) -> list[dict[str, Any]]:
     """Читает финансовые операции из CSV-файла и возвращает список словарей."""
-    dataframe = pd.read_csv(file_path)
+    dataframe = pd.read_csv(file_path, delimiter=";")
     records = dataframe.to_dict(orient="records")
     return cast(list[dict[str, Any]], records)
 

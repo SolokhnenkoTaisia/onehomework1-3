@@ -22,7 +22,10 @@ def test_read_transactions_from_csv(mock_read_csv: Mock) -> None:
 
     result = read_transactions_from_csv("test.csv")
 
-    mock_read_csv.assert_called_once_with("test.csv")
+    mock_read_csv.assert_called_once_with(
+        "test.csv",
+        delimiter=";",
+    )
     mock_dataframe.to_dict.assert_called_once_with(orient="records")
     assert result == expected
 
