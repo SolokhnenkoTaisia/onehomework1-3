@@ -1,4 +1,4 @@
-# PythonProject2
+﻿# PythonProject2
 
 ## Описание проекта
 
@@ -158,7 +158,7 @@ poetry run pytest
 poetry run pytest --cov=src --cov-report=term-missing --cov-report=html
 ```
 
-Текущее покрытие кода тестами составляет 100%.
+Текущее общее покрытие кода тестами составляет 96%.
 
 HTML-отчёт создаётся в папке `htmlcov/`. Для просмотра отчёта откройте файл `htmlcov/index.html` в браузере.
 
@@ -170,4 +170,35 @@ HTML-отчёт создаётся в папке `htmlcov/`. Для просмо
 * `tests/` — тесты проекта.
 * `htmlcov/` — HTML-отчёт о покрытии кода тестами.
 * `src/generators.py` — генераторы для фильтрации транзакций, получения описаний и создания номеров карт.
+
+
+### Модуль `file_readers.py`
+
+Модуль предназначен для чтения финансовых операций из CSV- и Excel-файлов. Для обработки табличных данных используется библиотека `pandas`.
+
+- `read_transactions_from_csv(file_path)` — читает CSV-файл и возвращает список словарей, в которых каждый словарь представляет одну операцию.
+- `read_transactions_from_excel(file_path)` — читает Excel-файл и возвращает список словарей, в которых каждый словарь представляет одну операцию.
+
+В качестве `file_path` можно передать путь к файлу в виде строки или объекта `Path`.
+
+Пример использования:
+
+```python
+from src.file_readers import (
+    read_transactions_from_csv,
+    read_transactions_from_excel,
+)
+
+csv_transactions = read_transactions_from_csv("transactions.csv")
+excel_transactions = read_transactions_from_excel("transactions_excel.xlsx")
+
+print(csv_transactions)
+print(excel_transactions)
+```
+
+Для работы с файлами используются библиотеки `pandas` и `openpyxl`. Зависимости устанавливаются командой:
+
+```bash
+poetry install
+```
 

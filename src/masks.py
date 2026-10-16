@@ -22,7 +22,9 @@ logger.addHandler(file_handler)
 def get_mask_card_number(card_number: str) -> str:
     """Маскирует номер банковской карты."""
     try:
-        result = f"{card_number[:4]} {card_number[4:6]}** **** {card_number[-4:]}"
+        first_part = f"{card_number[:4]} {card_number[4:6]}** ****"
+        last_four = card_number[-4:]
+        result = f"{first_part} {last_four}"
         logger.info("Номер карты успешно замаскирован")
         return result
     except Exception as error:

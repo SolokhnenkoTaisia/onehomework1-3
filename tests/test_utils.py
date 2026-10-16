@@ -33,7 +33,8 @@ def test_read_json_file_success() -> None:
     ],
 )
 def test_read_json_file_invalid_content(content: str) -> None:
-    """Проверяет пустой файл, неправильный JSON и содержимое не в виде списка."""
+    """Проверяет пустой файл, неправильный JSON и содержимое,
+    не в виде списка."""
     mocked_file = mock_open(read_data=content)
 
     with patch("builtins.open", mocked_file):

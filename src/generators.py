@@ -7,10 +7,11 @@ def filter_by_currency(
 ) -> Iterator[dict[str, Any]]:
     """Возвращает транзакции, у которых совпадает код валюты."""
     for transaction in transactions:
-        if (
-            transaction.get("operationAmount", {}).get("currency", {}).get("code")
-            == currency
-        ):
+        operation_amount = transaction.get("operationAmount", {})
+        currency_info = operation_amount.get("currency", {})
+        currency_code = currency_info.get("code")
+
+        if currency_code == currency:
             yield transaction
 
 
